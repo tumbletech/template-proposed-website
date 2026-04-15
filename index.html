@@ -1,0 +1,1207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Kirby Nagelhout Construction Company | Oregon's Builder</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;900&family=Barlow:wght@300;400;500&family=Playfair+Display:wght@700&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --steel: #1a1f2e;
+    --iron: #252b3b;
+    --rust: #c0392b;
+    --rust-light: #e74c3c;
+    --gold: #d4a843;
+    --concrete: #8c8c8c;
+    --smoke: #b0b8c4;
+    --white: #f4f2ee;
+    --offwhite: #eae7e0;
+    --accent: #c0392b;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Barlow', sans-serif;
+    background: var(--steel);
+    color: var(--white);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 48px;
+    height: 72px;
+    background: rgba(26,31,46,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(192,57,43,0.25);
+    transition: background 0.3s;
+  }
+  .nav-logo {
+    display: flex; align-items: center; gap: 12px;
+    text-decoration: none;
+  }
+  .nav-logo-mark {
+    width: 38px; height: 38px;
+    background: var(--rust);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900; font-size: 20px;
+    color: #fff;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  }
+  .nav-logo-text {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700; font-size: 15px; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--white);
+    line-height: 1.2;
+  }
+  .nav-logo-text span { display: block; font-weight: 400; font-size: 11px; color: var(--smoke); letter-spacing: 0.15em; }
+  .nav-links {
+    display: flex; gap: 36px; list-style: none;
+  }
+  .nav-links a {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600; font-size: 13px; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--smoke);
+    text-decoration: none;
+    transition: color 0.2s;
+    position: relative;
+  }
+  .nav-links a::after {
+    content: '';
+    position: absolute; bottom: -4px; left: 0; right: 0;
+    height: 1px; background: var(--rust);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.25s ease;
+  }
+  .nav-links a:hover { color: var(--white); }
+  .nav-links a:hover::after { transform: scaleX(1); }
+  .nav-cta {
+    background: var(--rust);
+    color: #fff !important;
+    padding: 9px 22px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700; font-size: 13px; letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.2s;
+    clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+  }
+  .nav-cta:hover { background: var(--rust-light) !important; }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    overflow: hidden;
+  }
+
+  .hero-left {
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 120px 64px 80px 64px;
+    position: relative; z-index: 2;
+  }
+
+  .hero-eyebrow {
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 24px;
+  }
+  .hero-eyebrow-line { width: 40px; height: 2px; background: var(--rust); }
+  .hero-eyebrow span {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600; font-size: 12px; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--rust);
+  }
+
+  .hero-headline {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: clamp(64px, 7vw, 110px);
+    line-height: 0.92;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    color: var(--white);
+    margin-bottom: 32px;
+  }
+  .hero-headline em {
+    font-style: normal;
+    color: var(--rust);
+    display: block;
+  }
+
+  .hero-sub {
+    font-size: 17px; font-weight: 300; line-height: 1.65;
+    color: var(--smoke);
+    max-width: 420px;
+    margin-bottom: 48px;
+    border-left: 3px solid var(--rust);
+    padding-left: 20px;
+  }
+
+  .hero-stats {
+    display: flex; gap: 48px;
+    margin-bottom: 48px;
+  }
+  .stat-item {}
+  .stat-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900; font-size: 52px;
+    color: var(--white); line-height: 1;
+  }
+  .stat-num sup { font-size: 24px; }
+  .stat-label {
+    font-size: 12px; font-weight: 400; color: var(--smoke);
+    letter-spacing: 0.1em; text-transform: uppercase;
+    margin-top: 4px;
+  }
+
+  .hero-actions { display: flex; gap: 16px; align-items: center; }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--rust); color: #fff;
+    padding: 16px 32px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700; font-size: 14px; letter-spacing: 0.12em;
+    text-transform: uppercase; text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+    clip-path: polygon(12px 0%, 100% 0%, calc(100% - 12px) 100%, 0% 100%);
+  }
+  .btn-primary:hover { background: var(--rust-light); transform: translateY(-2px); }
+  .btn-primary svg { width: 16px; height: 16px; }
+
+  .btn-ghost {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: transparent; color: var(--white);
+    padding: 15px 28px;
+    border: 1px solid rgba(244,242,238,0.25);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600; font-size: 14px; letter-spacing: 0.12em;
+    text-transform: uppercase; text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-ghost:hover { border-color: var(--white); }
+
+  /* Hero right - image mosaic */
+  .hero-right {
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-img-main {
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, #2a3550 0%, #1a1f2e 100%);
+    overflow: hidden;
+  }
+
+  /* SVG construction illustration fills right side */
+  .hero-illustration {
+    position: absolute; inset: 0;
+    opacity: 0.18;
+  }
+
+  .hero-overlay-card {
+    position: absolute; bottom: 80px; left: -40px;
+    background: var(--iron);
+    border: 1px solid rgba(192,57,43,0.4);
+    padding: 24px 28px;
+    width: 260px;
+    z-index: 3;
+  }
+  .overlay-card-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--rust); margin-bottom: 10px;
+  }
+  .overlay-card-value {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900; font-size: 38px; color: var(--white); line-height: 1;
+  }
+  .overlay-card-sub { font-size: 13px; color: var(--smoke); margin-top: 6px; }
+
+  /* Big background number */
+  .hero-bg-num {
+    position: absolute; top: 50%; right: -20px;
+    transform: translateY(-50%);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900; font-size: 280px;
+    color: rgba(192,57,43,0.06);
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+    letter-spacing: -0.04em;
+  }
+
+  /* Diagonal divider */
+  .hero-diagonal {
+    position: absolute;
+    top: 0; bottom: 0;
+    left: 50%;
+    width: 80px;
+    background: var(--steel);
+    transform: skewX(-4deg);
+    z-index: 3;
+  }
+
+  /* ── MARQUEE ── */
+  .marquee-wrap {
+    background: var(--rust);
+    padding: 14px 0;
+    overflow: hidden;
+    position: relative;
+    z-index: 4;
+  }
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marquee 30s linear infinite;
+  }
+  .marquee-item {
+    display: flex; align-items: center; gap: 20px;
+    padding: 0 32px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700; font-size: 14px; letter-spacing: 0.12em;
+    text-transform: uppercase; color: rgba(255,255,255,0.9);
+    white-space: nowrap;
+  }
+  .marquee-dot { width: 6px; height: 6px; background: rgba(255,255,255,0.5); border-radius: 50%; }
+  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  /* ── SECTION COMMON ── */
+  section { position: relative; }
+  .section-eyebrow {
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 16px;
+  }
+  .section-eyebrow-line { width: 32px; height: 2px; background: var(--rust); }
+  .section-eyebrow span {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600; font-size: 11px; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--rust);
+  }
+  .section-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900; font-size: clamp(40px, 5vw, 72px);
+    text-transform: uppercase; line-height: 0.95;
+    color: var(--white);
+  }
+  .section-title em { font-style: normal; color: var(--rust); }
+
+  /* ── ABOUT ── */
+  .about {
+    padding: 120px 64px;
+    background: var(--iron);
+  }
+  .about-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1.2fr; gap: 100px; align-items: center;
+  }
+  .about-left {}
+  .about-body {
+    font-size: 17px; font-weight: 300; line-height: 1.75;
+    color: var(--smoke); margin-top: 28px;
+  }
+  .about-body strong { color: var(--white); font-weight: 500; }
+  .about-badges {
+    display: flex; gap: 16px; flex-wrap: wrap;
+    margin-top: 36px;
+  }
+  .badge {
+    border: 1px solid rgba(192,57,43,0.4);
+    padding: 8px 18px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600; font-size: 12px; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--smoke);
+  }
+
+  .about-right {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 2px;
+  }
+  .about-metric {
+    background: var(--steel);
+    padding: 32px 28px;
+    position: relative; overflow: hidden;
+  }
+  .about-metric::before {
+    content: '';
+    position: absolute; top: 0; left: 0;
+    width: 3px; height: 0;
+    background: var(--rust);
+    transition: height 0.4s ease;
+  }
+  .about-metric:hover::before { height: 100%; }
+  .about-metric-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900; font-size: 56px; line-height: 1;
+    color: var(--white);
+  }
+  .about-metric-label {
+    font-size: 13px; color: var(--smoke); margin-top: 8px; font-weight: 400;
+  }
+  .about-metric-big { grid-column: span 2; }
+  .about-metric-big .about-metric-num { font-size: 72px; color: var(--rust); }
+
+  /* ── SERVICES ── */
+  .services {
+    padding: 120px 64px;
+    background: var(--steel);
+    overflow: hidden;
+  }
+  .services-inner { max-width: 1200px; margin: 0 auto; }
+  .services-header {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    margin-bottom: 64px;
+  }
+  .services-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
+  }
+  .service-card {
+    background: var(--iron);
+    padding: 48px 36px;
+    position: relative; overflow: hidden;
+    cursor: default;
+    transition: background 0.3s;
+  }
+  .service-card::after {
+    content: '';
+    position: absolute; bottom: 0; left: 0; right: 0;
+    height: 3px; background: var(--rust);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.35s ease;
+  }
+  .service-card:hover { background: #2a3040; }
+  .service-card:hover::after { transform: scaleX(1); }
+  .service-icon {
+    width: 48px; height: 48px; margin-bottom: 24px;
+    color: var(--rust);
+  }
+  .service-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900; font-size: 11px; letter-spacing: 0.2em;
+    color: var(--rust); opacity: 0.6; margin-bottom: 16px;
+  }
+  .service-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700; font-size: 24px; text-transform: uppercase;
+    letter-spacing: 0.05em; color: var(--white);
+    margin-bottom: 14px;
+  }
+  .service-desc {
+    font-size: 14px; font-weight: 300; line-height: 1.7;
+    color: var(--smoke);
+  }
+  .service-link {
+    display: inline-flex; align-items: center; gap: 8px;
+    margin-top: 24px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600; font-size: 13px; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--rust);
+    text-decoration: none;
+    transition: gap 0.2s;
+  }
+  .service-link:hover { gap: 14px; }
+
+  /* ── PROJECTS ── */
+  .projects {
+    padding: 120px 0 120px 64px;
+    background: var(--iron);
+  }
+  .projects-inner { max-width: 1600px; }
+  .projects-header {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    margin-bottom: 56px; padding-right: 64px;
+  }
+  .projects-scroll {
+    display: flex; gap: 3px;
+    overflow-x: auto;
+    padding-bottom: 8px;
+    scrollbar-width: none;
+  }
+  .projects-scroll::-webkit-scrollbar { display: none; }
+  .project-card {
+    flex: 0 0 340px;
+    height: 440px;
+    position: relative; overflow: hidden;
+    background: var(--steel);
+    cursor: pointer;
+  }
+  .project-card-img {
+    position: absolute; inset: 0;
+    background: linear-gradient(160deg, #2a3550, #1a1f2e);
+    transition: transform 0.5s ease;
+  }
+  .project-card:hover .project-card-img { transform: scale(1.04); }
+  .project-card-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(26,31,46,0.95) 0%, rgba(26,31,46,0.1) 60%);
+  }
+  .project-card-content {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: 32px;
+  }
+  .project-tag {
+    display: inline-block;
+    background: var(--rust); color: #fff;
+    padding: 4px 10px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600; font-size: 11px; letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);
+  }
+  .project-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700; font-size: 22px;
+    text-transform: uppercase; letter-spacing: 0.04em;
+    color: var(--white); line-height: 1.1;
+    margin-bottom: 8px;
+  }
+  .project-location { font-size: 13px; color: var(--smoke); }
+
+  /* Project card SVG illustrations */
+  .proj-svg {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    opacity: 0.15;
+  }
+
+  /* ── AWARDS STRIP ── */
+  .awards {
+    background: var(--rust);
+    padding: 56px 64px;
+    display: flex; align-items: center;
+    justify-content: center; gap: 80px;
+    flex-wrap: wrap;
+  }
+  .award-item { text-align: center; }
+  .award-year {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900; font-size: 42px; color: #fff; line-height: 1;
+  }
+  .award-label { font-size: 13px; color: rgba(255,255,255,0.75); margin-top: 6px; }
+  .award-divider { width: 1px; height: 60px; background: rgba(255,255,255,0.25); }
+
+  /* ── OFFICES ── */
+  .offices {
+    padding: 120px 64px;
+    background: var(--steel);
+  }
+  .offices-inner { max-width: 1200px; margin: 0 auto; }
+  .offices-header { margin-bottom: 64px; }
+  .offices-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
+  }
+  .office-card {
+    background: var(--iron);
+    padding: 48px 36px;
+    position: relative;
+    border-top: 3px solid transparent;
+    transition: border-color 0.3s;
+  }
+  .office-card:hover { border-color: var(--rust); }
+  .office-city {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900; font-size: 42px; text-transform: uppercase;
+    letter-spacing: -0.01em; color: var(--white); margin-bottom: 4px;
+  }
+  .office-state { color: var(--rust); }
+  .office-address { font-size: 15px; font-weight: 300; color: var(--smoke); line-height: 1.8; margin-bottom: 20px; }
+  .office-phone {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600; font-size: 18px; color: var(--white);
+    text-decoration: none;
+    display: flex; align-items: center; gap: 8px;
+    transition: color 0.2s;
+  }
+  .office-phone:hover { color: var(--rust); }
+
+  /* ── CAREERS ── */
+  .careers {
+    position: relative;
+    padding: 100px 64px;
+    background: var(--iron);
+    overflow: hidden;
+  }
+  .careers-bg-text {
+    position: absolute;
+    right: -20px; top: 50%; transform: translateY(-50%);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900; font-size: 220px;
+    color: rgba(192,57,43,0.05);
+    line-height: 1; pointer-events: none;
+    text-transform: uppercase;
+  }
+  .careers-inner {
+    max-width: 700px;
+    position: relative; z-index: 2;
+  }
+  .careers .section-title { margin-top: 16px; margin-bottom: 24px; }
+  .careers-sub {
+    font-size: 17px; font-weight: 300; line-height: 1.7;
+    color: var(--smoke); margin-bottom: 40px;
+  }
+  .careers-perks {
+    display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 40px;
+  }
+  .perk {
+    display: flex; align-items: center; gap: 8px;
+    padding: 8px 16px;
+    border: 1px solid rgba(192,57,43,0.35);
+    font-size: 13px; font-weight: 400; color: var(--smoke);
+  }
+  .perk-dot { width: 6px; height: 6px; background: var(--rust); border-radius: 50%; flex-shrink: 0; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #111520;
+    padding: 64px 64px 40px;
+  }
+  .footer-top {
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 64px;
+    margin-bottom: 56px;
+    padding-bottom: 56px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .footer-brand-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900; font-size: 22px; text-transform: uppercase;
+    letter-spacing: 0.05em; color: var(--white); margin-bottom: 12px;
+  }
+  .footer-brand-tagline {
+    font-size: 14px; font-weight: 300; color: var(--smoke);
+    line-height: 1.7; max-width: 280px; margin-bottom: 28px;
+  }
+  .footer-social { display: flex; gap: 12px; }
+  .social-btn {
+    width: 38px; height: 38px;
+    background: var(--iron);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--smoke); text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+    font-size: 15px;
+  }
+  .social-btn:hover { background: var(--rust); color: #fff; }
+  .footer-col-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700; font-size: 13px; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--rust);
+    margin-bottom: 20px;
+  }
+  .footer-links { list-style: none; }
+  .footer-links li { margin-bottom: 10px; }
+  .footer-links a {
+    font-size: 14px; font-weight: 300; color: var(--smoke);
+    text-decoration: none; transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--white); }
+  .footer-bottom {
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 16px;
+  }
+  .footer-copy { font-size: 13px; color: rgba(140,140,140,0.6); }
+  .footer-lic { font-size: 12px; color: rgba(140,140,140,0.4); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes slideRight {
+    from { opacity: 0; transform: translateX(-20px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  .hero-eyebrow { animation: slideRight 0.6s ease 0.2s both; }
+  .hero-headline { animation: fadeUp 0.7s ease 0.4s both; }
+  .hero-sub { animation: fadeUp 0.7s ease 0.55s both; }
+  .hero-stats { animation: fadeUp 0.7s ease 0.65s both; }
+  .hero-actions { animation: fadeUp 0.7s ease 0.75s both; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1024px) {
+    nav { padding: 0 24px; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-left { padding: 100px 32px 64px; }
+    .hero-right { display: none; }
+    .hero-diagonal { display: none; }
+    .about-inner { grid-template-columns: 1fr; gap: 48px; }
+    .services-grid { grid-template-columns: 1fr; }
+    .offices-grid { grid-template-columns: 1fr; }
+    .footer-top { grid-template-columns: 1fr 1fr; gap: 40px; }
+    section { padding-left: 32px !important; padding-right: 32px !important; }
+    .projects { padding-left: 32px !important; }
+    .about, .services, .offices, .careers, .projects { padding-top: 80px !important; padding-bottom: 80px !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-mark">KN</div>
+    <div class="nav-logo-text">
+      Kirby Nagelhout
+      <span>Construction Company</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#offices">Locations</a></li>
+    <li><a href="#careers">Careers</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Contact Us</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">
+      <div class="hero-eyebrow-line"></div>
+      <span>Oregon's Builder Since 1986</span>
+    </div>
+    <h1 class="hero-headline">
+      Built<br>To<br><em>Last.</em>
+    </h1>
+    <p class="hero-sub">
+      Kirby Nagelhout Construction Company delivers concrete results across Oregon and Southern Washington — from schools and courthouses to lodges and infrastructure.
+    </p>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-num">38<sup>+</sup></div>
+        <div class="stat-label">Years in Service</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">200<sup>+</sup></div>
+        <div class="stat-label">Skilled Employees</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">75<sup>+</sup></div>
+        <div class="stat-label">Projects Per Year</div>
+      </div>
+    </div>
+    <div class="hero-actions">
+      <a href="#projects" class="btn-primary">
+        View Our Work
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg>
+      </a>
+      <a href="#contact" class="btn-ghost">Get a Bid</a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-img-main">
+      <!-- Oregon landscape + construction SVG -->
+      <svg class="hero-illustration" viewBox="0 0 700 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Mountains -->
+        <polygon points="0,600 120,350 240,420 350,280 480,380 580,300 700,400 700,900 0,900" fill="#3a4560" opacity="0.6"/>
+        <polygon points="0,650 100,450 200,500 280,380 380,440 500,360 620,420 700,480 700,900 0,900" fill="#2a3550" opacity="0.8"/>
+        <!-- Building silhouette -->
+        <rect x="180" y="400" width="200" height="350" fill="#1e2540" opacity="0.9"/>
+        <rect x="200" y="380" width="160" height="30" fill="#252d45"/>
+        <!-- Windows grid -->
+        <g fill="#c0392b" opacity="0.5">
+          <rect x="195" y="410" width="20" height="25"/><rect x="225" y="410" width="20" height="25"/><rect x="255" y="410" width="20" height="25"/><rect x="285" y="410" width="20" height="25"/><rect x="315" y="410" width="20" height="25"/><rect x="345" y="410" width="20" height="25"/>
+          <rect x="195" y="450" width="20" height="25"/><rect x="225" y="450" width="20" height="25"/><rect x="255" y="450" width="20" height="25"/><rect x="285" y="450" width="20" height="25"/><rect x="315" y="450" width="20" height="25"/><rect x="345" y="450" width="20" height="25"/>
+          <rect x="195" y="490" width="20" height="25"/><rect x="225" y="490" width="20" height="25"/><rect x="255" y="490" width="20" height="25"/><rect x="285" y="490" width="20" height="25"/><rect x="315" y="490" width="20" height="25"/><rect x="345" y="490" width="20" height="25"/>
+          <rect x="195" y="530" width="20" height="25"/><rect x="225" y="530" width="20" height="25"/><rect x="255" y="530" width="20" height="25"/><rect x="285" y="530" width="20" height="25"/><rect x="315" y="530" width="20" height="25"/><rect x="345" y="530" width="20" height="25"/>
+        </g>
+        <!-- Crane -->
+        <line x1="440" y1="700" x2="440" y2="280" stroke="#d4a843" stroke-width="6" opacity="0.7"/>
+        <line x1="440" y1="280" x2="600" y2="280" stroke="#d4a843" stroke-width="5" opacity="0.7"/>
+        <line x1="440" y1="280" x2="380" y2="300" stroke="#d4a843" stroke-width="3" opacity="0.6"/>
+        <line x1="600" y1="280" x2="600" y2="360" stroke="#d4a843" stroke-width="2" stroke-dasharray="4,4" opacity="0.5"/>
+        <!-- Grid lines -->
+        <line x1="0" y1="750" x2="700" y2="750" stroke="#3a4560" stroke-width="1" opacity="0.5"/>
+        <line x1="0" y1="700" x2="700" y2="700" stroke="#3a4560" stroke-width="0.5" opacity="0.3"/>
+        <!-- Forest silhouette -->
+        <g fill="#1a2035" opacity="0.9">
+          <polygon points="50,750 80,660 110,750"/>
+          <polygon points="90,750 125,640 160,750"/>
+          <polygon points="130,750 170,655 210,750"/>
+          <polygon points="480,750 510,665 540,750"/>
+          <polygon points="520,750 555,645 590,750"/>
+          <polygon points="570,750 610,655 650,750"/>
+        </g>
+      </svg>
+    </div>
+
+    <!-- Floating metric card -->
+    <div class="hero-overlay-card">
+      <div class="overlay-card-label">DJC Top 15</div>
+      <div class="overlay-card-value">#1–15</div>
+      <div class="overlay-card-sub">Oregon Contractors, every year</div>
+    </div>
+    <div class="hero-bg-num">86</div>
+  </div>
+
+  <div class="hero-diagonal"></div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <div class="marquee-item"><span>CM/GC</span><div class="marquee-dot"></div></div>
+    <div class="marquee-item"><span>Design-Build</span><div class="marquee-dot"></div></div>
+    <div class="marquee-item"><span>Lump Sum Hard Bid</span><div class="marquee-dot"></div></div>
+    <div class="marquee-item"><span>Pre-Construction Services</span><div class="marquee-dot"></div></div>
+    <div class="marquee-item"><span>Concrete Structures</span><div class="marquee-dot"></div></div>
+    <div class="marquee-item"><span>Steel Fabrication</span><div class="marquee-dot"></div></div>
+    <div class="marquee-item"><span>Timber Framing</span><div class="marquee-dot"></div></div>
+    <div class="marquee-item"><span>Metal Buildings</span><div class="marquee-dot"></div></div>
+    <div class="marquee-item"><span>Oregon & S. Washington</span><div class="marquee-dot"></div></div>
+    <!-- repeat for seamless loop -->
+    <div class="marquee-item"><span>CM/GC</span><div class="marquee-dot"></div></div>
+    <div class="marquee-item"><span>Design-Build</span><div class="marquee-dot"></div></div>
+    <div class="marquee-item"><span>Lump Sum Hard Bid</span><div class="marquee-dot"></div></div>
+    <div class="marquee-item"><span>Pre-Construction Services</span><div class="marquee-dot"></div></div>
+    <div class="marquee-item"><span>Concrete Structures</span><div class="marquee-dot"></div></div>
+    <div class="marquee-item"><span>Steel Fabrication</span><div class="marquee-dot"></div></div>
+    <div class="marquee-item"><span>Timber Framing</span><div class="marquee-dot"></div></div>
+    <div class="marquee-item"><span>Metal Buildings</span><div class="marquee-dot"></div></div>
+    <div class="marquee-item"><span>Oregon & S. Washington</span><div class="marquee-dot"></div></div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-inner">
+    <div class="about-left">
+      <div class="section-eyebrow">
+        <div class="section-eyebrow-line"></div>
+        <span>Who We Are</span>
+      </div>
+      <h2 class="section-title">Oregon's<br><em>Backbone</em><br>Builder</h2>
+      <p class="about-body">
+        Founded in <strong>1986</strong>, Kirby Nagelhout Construction Company has grown into one of Oregon's most trusted general contractors. With permanent offices in <strong>Bend, Portland, and Pendleton</strong>, we serve communities from the coast to the high desert.
+        <br><br>
+        Our 200+ employees execute <strong>75+ projects annually</strong>, spanning public schools, justice facilities, water infrastructure, recreation centers, and commercial landmarks. Quality, safety, and budget discipline are non-negotiable.
+      </p>
+      <div class="about-badges">
+        <div class="badge">CCB #95590</div>
+        <div class="badge">WA KIRBYNC888DW</div>
+        <div class="badge">DJC Top 15 Contractor</div>
+        <div class="badge">LEED Capable</div>
+      </div>
+    </div>
+    <div class="about-right">
+      <div class="about-metric">
+        <div class="about-metric-num">1986</div>
+        <div class="about-metric-label">Year Founded</div>
+      </div>
+      <div class="about-metric">
+        <div class="about-metric-num">3</div>
+        <div class="about-metric-label">Oregon Offices</div>
+      </div>
+      <div class="about-metric">
+        <div class="about-metric-num">200+</div>
+        <div class="about-metric-label">Team Members</div>
+      </div>
+      <div class="about-metric">
+        <div class="about-metric-num">75+</div>
+        <div class="about-metric-label">Projects / Year</div>
+      </div>
+      <div class="about-metric about-metric-big">
+        <div class="about-metric-num">38+ YRS</div>
+        <div class="about-metric-label">Building Communities Across the Pacific Northwest</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="services-inner">
+    <div class="services-header">
+      <div>
+        <div class="section-eyebrow">
+          <div class="section-eyebrow-line"></div>
+          <span>What We Build</span>
+        </div>
+        <h2 class="section-title">Full-Spectrum<br><em>Construction</em></h2>
+      </div>
+      <a href="#contact" class="btn-ghost" style="flex-shrink:0">Discuss Your Project →</a>
+    </div>
+    <div class="services-grid">
+
+      <div class="service-card">
+        <div class="service-num">01</div>
+        <div class="service-title">Pre-Construction</div>
+        <p class="service-desc">Feasibility studies, estimating, scheduling, value engineering, and constructability reviews — setting your project up to succeed before a single shovel breaks ground.</p>
+        <a href="#" class="service-link">Learn More →</a>
+      </div>
+
+      <div class="service-card">
+        <div class="service-num">02</div>
+        <div class="service-title">Concrete</div>
+        <p class="service-desc">From tilt-up panels to post-tensioned slabs and structural concrete framing, our in-house crews deliver precision and durability at scale.</p>
+        <a href="#" class="service-link">Learn More →</a>
+      </div>
+
+      <div class="service-card">
+        <div class="service-num">03</div>
+        <div class="service-title">Steel Fabrication</div>
+        <p class="service-desc">Custom structural steel designed and fabricated in Oregon. Tighter tolerances, faster schedules, and complete accountability under one roof.</p>
+        <a href="#" class="service-link">Learn More →</a>
+      </div>
+
+      <div class="service-card">
+        <div class="service-num">04</div>
+        <div class="service-title">Metal Buildings</div>
+        <p class="service-desc">Pre-engineered metal building systems sized for agricultural, industrial, and commercial applications — designed for Oregon's climate demands.</p>
+        <a href="#" class="service-link">Learn More →</a>
+      </div>
+
+      <div class="service-card">
+        <div class="service-num">05</div>
+        <div class="service-title">Timber & Wood Framing</div>
+        <p class="service-desc">Heavy timber, mass timber, and conventional wood framing executed with the craftsmanship Oregon's landscape deserves. Structural beauty meets engineered performance.</p>
+        <a href="#" class="service-link">Learn More →</a>
+      </div>
+
+      <div class="service-card">
+        <div class="service-num">06</div>
+        <div class="service-title">Safety & Quality</div>
+        <p class="service-desc">An EMR that beats the industry average. Dedicated safety officers, rigorous QA/QC programs, and a culture where every worker goes home safe.</p>
+        <a href="#" class="service-link">Learn More →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="projects" id="projects">
+  <div class="projects-inner">
+    <div class="projects-header">
+      <div>
+        <div class="section-eyebrow">
+          <div class="section-eyebrow-line"></div>
+          <span>Portfolio</span>
+        </div>
+        <h2 class="section-title">Notable<br><em>Projects</em></h2>
+      </div>
+      <a href="#" class="btn-ghost" style="flex-shrink:0;margin-right:64px">View All Projects →</a>
+    </div>
+
+    <div class="projects-scroll">
+
+      <div class="project-card">
+        <div class="project-card-img">
+          <svg class="proj-svg" viewBox="0 0 340 440" fill="none">
+            <rect x="40" y="100" width="260" height="280" fill="#3a4560"/>
+            <rect x="60" y="80" width="220" height="30" fill="#4a5570"/>
+            <g fill="#c0392b" opacity="0.6">
+              <rect x="60" y="120" width="35" height="45"/><rect x="110" y="120" width="35" height="45"/>
+              <rect x="160" y="120" width="35" height="45"/><rect x="210" y="120" width="35" height="45"/>
+              <rect x="60" y="180" width="35" height="45"/><rect x="110" y="180" width="35" height="45"/>
+              <rect x="160" y="180" width="35" height="45"/><rect x="210" y="180" width="35" height="45"/>
+              <rect x="60" y="240" width="35" height="45"/><rect x="110" y="240" width="35" height="45"/>
+              <rect x="160" y="240" width="35" height="45"/><rect x="210" y="240" width="35" height="45"/>
+            </g>
+            <rect x="120" y="300" width="100" height="80" fill="#2a3550"/>
+          </svg>
+        </div>
+        <div class="project-card-overlay"></div>
+        <div class="project-card-content">
+          <div class="project-tag">Justice</div>
+          <div class="project-title">Crook County<br>Justice Center</div>
+          <div class="project-location">Prineville, OR · 2025 DJC Top Project</div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-card-img">
+          <svg class="proj-svg" viewBox="0 0 340 440" fill="none">
+            <rect x="20" y="180" width="300" height="200" fill="#3a4560"/>
+            <polygon points="20,180 170,80 320,180" fill="#4a5570"/>
+            <rect x="60" y="200" width="50" height="70" fill="#c0392b" opacity="0.5"/>
+            <rect x="140" y="200" width="60" height="70" fill="#c0392b" opacity="0.5"/>
+            <rect x="230" y="200" width="50" height="70" fill="#c0392b" opacity="0.5"/>
+            <rect x="130" y="290" width="80" height="90" fill="#2a3550"/>
+            <circle cx="170" cy="140" r="20" fill="#d4a843" opacity="0.4"/>
+          </svg>
+        </div>
+        <div class="project-card-overlay"></div>
+        <div class="project-card-content">
+          <div class="project-tag">Education</div>
+          <div class="project-title">Redmond<br>Public Library</div>
+          <div class="project-location">Redmond, OR · 2025 DJC Top Project</div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-card-img">
+          <svg class="proj-svg" viewBox="0 0 340 440" fill="none">
+            <rect x="30" y="200" width="280" height="200" fill="#3a4560"/>
+            <polygon points="30,200 80,140 170,200" fill="#4a5570"/>
+            <polygon points="170,200 260,140 310,200" fill="#4a5570"/>
+            <path d="M80 200 Q120 160 170 155 Q220 160 260 200" stroke="#d4a843" stroke-width="3" fill="none" opacity="0.5"/>
+            <rect x="70" y="280" width="200" height="4" fill="#d4a843" opacity="0.3"/>
+            <circle cx="170" cy="320" r="30" fill="none" stroke="#3a8fcc" stroke-width="3" opacity="0.4"/>
+          </svg>
+        </div>
+        <div class="project-card-overlay"></div>
+        <div class="project-card-content">
+          <div class="project-tag">Hospitality</div>
+          <div class="project-title">Black Butte Ranch<br>Lodge & Pool</div>
+          <div class="project-location">Sisters, OR · 2024 DJC Top Project</div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-card-img">
+          <svg class="proj-svg" viewBox="0 0 340 440" fill="none">
+            <rect x="40" y="160" width="120" height="200" fill="#3a4560"/>
+            <rect x="180" y="200" width="120" height="160" fill="#3a4560"/>
+            <rect x="20" y="120" width="160" height="50" fill="#4a5570"/>
+            <g fill="#3a8fcc" opacity="0.4">
+              <rect x="200" y="220" width="30" height="30"/><rect x="250" y="220" width="30" height="30"/>
+              <rect x="200" y="270" width="30" height="30"/><rect x="250" y="270" width="30" height="30"/>
+            </g>
+            <path d="M40 360 L300 360 L300 380 L40 380 Z" fill="#d4a843" opacity="0.3"/>
+            <circle cx="100" cy="200" r="40" fill="none" stroke="#c0392b" stroke-width="3" stroke-dasharray="6,4" opacity="0.4"/>
+          </svg>
+        </div>
+        <div class="project-card-overlay"></div>
+        <div class="project-card-content">
+          <div class="project-tag">Education</div>
+          <div class="project-title">May Street<br>Elementary School</div>
+          <div class="project-location">Hood River, OR</div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-card-img">
+          <svg class="proj-svg" viewBox="0 0 340 440" fill="none">
+            <rect x="60" y="160" width="220" height="240" fill="#3a4560"/>
+            <rect x="40" y="140" width="260" height="30" fill="#4a5570"/>
+            <rect x="80" y="120" width="180" height="30" fill="#4a5570"/>
+            <rect x="100" y="100" width="140" height="30" fill="#3a4560"/>
+            <g fill="#d4a843" opacity="0.4">
+              <rect x="80" y="180" width="40" height="50"/>
+              <rect x="150" y="180" width="40" height="50"/>
+              <rect x="220" y="180" width="40" height="50"/>
+            </g>
+            <rect x="130" y="310" width="80" height="90" fill="#2a3550"/>
+            <line x1="170" y1="100" x2="170" y2="60" stroke="#d4a843" stroke-width="3" opacity="0.5"/>
+            <line x1="130" y1="60" x2="210" y2="60" stroke="#d4a843" stroke-width="2" opacity="0.5"/>
+          </svg>
+        </div>
+        <div class="project-card-overlay"></div>
+        <div class="project-card-content">
+          <div class="project-tag">Civic</div>
+          <div class="project-title">Sherman County<br>Courthouse</div>
+          <div class="project-location">Moro, OR</div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-card-img">
+          <svg class="proj-svg" viewBox="0 0 340 440" fill="none">
+            <ellipse cx="170" cy="320" rx="150" ry="80" fill="#3a4560"/>
+            <rect x="60" y="160" width="220" height="160" fill="#3a4560"/>
+            <ellipse cx="170" cy="160" rx="110" ry="50" fill="#4a5570"/>
+            <g fill="#3a8fcc" opacity="0.4">
+              <rect x="80" y="200" width="40" height="30"/><rect x="150" y="200" width="40" height="30"/><rect x="220" y="200" width="40" height="30"/>
+              <rect x="80" y="250" width="40" height="30"/><rect x="150" y="250" width="40" height="30"/><rect x="220" y="250" width="40" height="30"/>
+            </g>
+            <path d="M40 330 Q100 290 170 285 Q240 290 300 330" stroke="#c0392b" stroke-width="3" fill="none" opacity="0.5"/>
+          </svg>
+        </div>
+        <div class="project-card-overlay"></div>
+        <div class="project-card-content">
+          <div class="project-tag">Higher Ed</div>
+          <div class="project-title">COCC Science<br>Building</div>
+          <div class="project-location">Bend, OR</div>
+        </div>
+      </div>
+
+    </div><!-- end scroll -->
+  </div>
+</section>
+
+<!-- AWARDS -->
+<div class="awards">
+  <div class="award-item">
+    <div class="award-year">2025</div>
+    <div class="award-label">DJC Top Project — Justice Center</div>
+  </div>
+  <div class="award-divider"></div>
+  <div class="award-item">
+    <div class="award-year">2025</div>
+    <div class="award-label">DJC Top Project — Redmond Library</div>
+  </div>
+  <div class="award-divider"></div>
+  <div class="award-item">
+    <div class="award-year">2024</div>
+    <div class="award-label">DJC Top Project — Black Butte Lodge</div>
+  </div>
+  <div class="award-divider"></div>
+  <div class="award-item">
+    <div class="award-year">Top 15</div>
+    <div class="award-label">DJC Oregon Contractor Rankings</div>
+  </div>
+</div>
+
+<!-- OFFICES -->
+<section class="offices" id="offices">
+  <div class="offices-inner">
+    <div class="offices-header">
+      <div class="section-eyebrow">
+        <div class="section-eyebrow-line"></div>
+        <span>Our Locations</span>
+      </div>
+      <h2 class="section-title">Three Offices.<br><em>One Oregon.</em></h2>
+    </div>
+    <div class="offices-grid">
+      <div class="office-card" id="contact">
+        <div class="office-city">Bend, <span class="office-state">OR</span></div>
+        <div class="office-address">20635 Brinson Blvd.<br>Bend, OR 97701</div>
+        <a href="tel:5413897119" class="office-phone">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.07 1.18 2 2 0 012.07 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          541-389-7119
+        </a>
+      </div>
+      <div class="office-card">
+        <div class="office-city">Portland, <span class="office-state">OR</span></div>
+        <div class="office-address">9965 SW Arctic Drive<br>Beaverton, OR 97005</div>
+        <a href="tel:5035308420" class="office-phone">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.07 1.18 2 2 0 012.07 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          503-530-8420
+        </a>
+      </div>
+      <div class="office-card">
+        <div class="office-city">Pendleton, <span class="office-state">OR</span></div>
+        <div class="office-address">505 SW 16th Street<br>Pendleton, OR 97801</div>
+        <a href="tel:5416128575" class="office-phone">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.07 1.18 2 2 0 012.07 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          541-612-8575
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAREERS -->
+<section class="careers" id="careers">
+  <div class="careers-bg-text">BUILD</div>
+  <div class="careers-inner">
+    <div class="section-eyebrow">
+      <div class="section-eyebrow-line"></div>
+      <span>Join the Crew</span>
+    </div>
+    <h2 class="section-title">Build Your<br><em>Career</em></h2>
+    <p class="careers-sub">We're always looking for skilled tradespeople, project managers, estimators, and field leaders. KNCC has offered stable, rewarding careers across Oregon for nearly four decades.</p>
+    <div class="careers-perks">
+      <div class="perk"><div class="perk-dot"></div>Competitive wages</div>
+      <div class="perk"><div class="perk-dot"></div>Health & dental benefits</div>
+      <div class="perk"><div class="perk-dot"></div>401(k) with match</div>
+      <div class="perk"><div class="perk-dot"></div>Safety-first culture</div>
+      <div class="perk"><div class="perk-dot"></div>Oregon-based projects</div>
+      <div class="perk"><div class="perk-dot"></div>200+ strong team</div>
+    </div>
+    <a href="#" class="btn-primary">
+      View Open Positions
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand-name">Kirby Nagelhout<br>Construction Co.</div>
+      <p class="footer-brand-tagline">Building a strong, vibrant future for every community we serve since 1986.</p>
+      <div class="footer-social">
+        <a href="https://www.facebook.com/KirbyNagelhout/" class="social-btn" title="Facebook">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+        </a>
+        <a href="https://www.instagram.com/kirbynagelhoutconstructionco/" class="social-btn" title="Instagram">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/company/kirby-nagelhout-construction" class="social-btn" title="LinkedIn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div>
+      <div class="footer-col-title">Services</div>
+      <ul class="footer-links">
+        <li><a href="#">Pre-Construction</a></li>
+        <li><a href="#">Concrete</a></li>
+        <li><a href="#">Steel Fabrication</a></li>
+        <li><a href="#">Metal Buildings</a></li>
+        <li><a href="#">Timber Framing</a></li>
+        <li><a href="#">Safety & Quality</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <div class="footer-col-title">Company</div>
+      <ul class="footer-links">
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Our People</a></li>
+        <li><a href="#">Projects</a></li>
+        <li><a href="#">Awards</a></li>
+        <li><a href="#">News</a></li>
+        <li><a href="#">Careers</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <div class="footer-col-title">Resources</div>
+      <ul class="footer-links">
+        <li><a href="https://app.buildingconnected.com/public/58174eea5ce7c80b00b4e33d">Bidding Opportunities</a></li>
+        <li><a href="#">Employee Portal</a></li>
+        <li><a href="https://secure6.saashr.com/ta/6190368.login">UKG Payroll</a></li>
+        <li><a href="mailto:voe@kirbynagelhout.com">Verify Employment</a></li>
+        <li><a href="http://www.knvisions.com">KN Visions</a></li>
+        <li><a href="http://www.maxmfg.com">Max Manufacturing</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2026 Kirby Nagelhout Construction Company. All rights reserved.</div>
+    <div class="footer-lic">CCB #95590 · WA KIRBYNC888DW</div>
+  </div>
+</footer>
+
+<script>
+  // Subtle scroll effect on nav
+  const nav = document.querySelector('nav');
+  window.addEventListener('scroll', () => {
+    nav.style.background = window.scrollY > 60
+      ? 'rgba(17,21,32,0.97)'
+      : 'rgba(26,31,46,0.92)';
+  });
+
+  // Intersection Observer for metric reveals
+  const metrics = document.querySelectorAll('.about-metric, .service-card, .office-card');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        e.target.style.animation = `fadeUp 0.5s ease ${i * 0.07}s both`;
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  metrics.forEach(m => observer.observe(m));
+</script>
+</body>
+</html>
